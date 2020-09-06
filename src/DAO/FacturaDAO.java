@@ -14,7 +14,7 @@ import org.apache.commons.csv.CSVRecord;
 import conexion.Conexion;
 
 public class FacturaDAO {
-	private Conexion conexion;
+	private Conexion conexion; //Usamos un objeto Conexion para inicializarla y poder abrir y cerrar la conexión cuando sea necesario.
 	
 	
 
@@ -25,7 +25,7 @@ public class FacturaDAO {
 
 
 
-	public void insertCSV(String archivo) throws SQLException {
+	public void insertCSV(String archivo) throws SQLException { // Con este método leemos el archivo CSV, obtenemos los datos de las facturas y las subimos a la base de datos.
 		String insert = "INSERT INTO factura (id_factura, id_cliente) VALUES(?,?)";
 		Connection con = conexion.open();
 		PreparedStatement ps = con.prepareStatement(insert);
