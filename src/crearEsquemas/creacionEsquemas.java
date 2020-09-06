@@ -15,7 +15,7 @@ public class creacionEsquemas {
 	}
 	
 	
-	public void crearTablas() throws SQLException {
+	public void crearTablas() throws SQLException { //Con este método realizamos la creación de las tablas SQl
 		Connection con = conexion.open();
 		String table = "CREATE TABLE cliente(" + "id_cliente INT," + "nombre VARCHAR(500)," + "email VARCHAR(150),"
 				+ "PRIMARY KEY(id_cliente))";
