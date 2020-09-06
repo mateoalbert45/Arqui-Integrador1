@@ -23,7 +23,7 @@ public class Conexion {
 
 
 
-	public void inicializar() {
+	public void inicializar() { //Se inicializa la conexión una sola vez en todo el proceso
 		try {
 			Class.forName(driver).getDeclaredConstructor().newInstance();
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
@@ -35,7 +35,7 @@ public class Conexion {
 	
 	
 	
-	public Connection open() {
+	public Connection open() { //Se llama a este método cada vez que se necesita abrir la conexión 
 		try {
 			this.con = DriverManager.getConnection(uri, user, pass);
 		} catch (SQLException e) {
@@ -52,7 +52,7 @@ public class Conexion {
 
 
 
-	public void close() {
+	public void close() { //Y con éste método la cerramos.
 		try {
 			this.con.close();
 		} catch (SQLException e) {
