@@ -1,5 +1,7 @@
 package model;
 
+//Entidad Cliente con sus respectivos métodos y atributos
+
 public class Cliente {
 
 	private int idCliente;
