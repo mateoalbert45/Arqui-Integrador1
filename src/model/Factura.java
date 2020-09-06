@@ -1,4 +1,5 @@
 package model;
+//Entidad Factura con sus respectivos métodos y atributos
 
 public class Factura {
 	private int idFactura;
