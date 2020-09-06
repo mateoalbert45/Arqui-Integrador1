@@ -16,14 +16,14 @@ import conexion.Conexion;
 import model.Producto;
 
 public class ProductoDAO {
-	private Conexion conexion;
+	private Conexion conexion; //Usamos un objeto Conexion para inicializarla y poder abrir y cerrar la conexión cuando sea necesario.
 	
 	public ProductoDAO(Conexion con) {
 		super();
 		this.conexion = con;
 	}
 	
-	public void insertCSV(String archivo) throws SQLException {
+	public void insertCSV(String archivo) throws SQLException { // Con este método leemos el archivo CSV, obtenemos los datos de los productos y los subimos a la base de datos.
 		String insert = "INSERT INTO producto (id_producto, nombre, valor) VALUES(?,?,?)";
 		Connection con = conexion.open();
 		PreparedStatement ps = con.prepareStatement(insert);
@@ -46,13 +46,12 @@ public class ProductoDAO {
 
 	}
 	
-	public Producto getBestProduct() {
+	public Producto getBestProduct() { //Con este método obtenemos una lista de los productos que más se vendieron, siendo ordenados de mayor a menor por la cantidad facturada. 
 		try {
-			String select = "SELECT * FROM cliente";
 			Connection con = conexion.open();
 			PreparedStatement ps;
 			ResultSet rs;
-			select = "SELECT fp.id_producto,p.nombre, sum(fp.cantidad * p.valor) AS recaudacion FROM factura_producto fp JOIN producto p ON (fp.id_producto = p.id_producto) GROUP BY fp.id_producto, p.nombre ORDER BY recaudacion DESC";
+			String select = "SELECT fp.id_producto,p.nombre, sum(fp.cantidad * p.valor) AS recaudacion FROM factura_producto fp JOIN producto p ON (fp.id_producto = p.id_producto) GROUP BY fp.id_producto, p.nombre ORDER BY recaudacion DESC";
 			ps = con.prepareStatement(select);
 			rs = ps.executeQuery();
 			rs.next();
