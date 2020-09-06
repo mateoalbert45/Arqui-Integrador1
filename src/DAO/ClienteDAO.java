@@ -18,14 +18,14 @@ import conexion.Conexion;
 import model.Cliente;
 
 public class ClienteDAO {
-	private Conexion conexion;
+	private Conexion conexion; //Usamos un objeto Conexion para inicializarla y poder abrir y cerrar la conexión cuando sea necesario.
 
 	public ClienteDAO(Conexion con) {
 		super();
 		this.conexion = con;
 	}
 	
-	public void insertCSV(String archivo) throws SQLException {
+	public void insertCSV(String archivo) throws SQLException { // Con este método leemos el archivo CSV, obtenemos los datos de los clientes y los subimos a la base de datos.
 		String insert = "INSERT INTO cliente (id_cliente, nombre, email) VALUES(?,?,?)";
 		Connection con = conexion.open();
 		PreparedStatement ps = con.prepareStatement(insert);
@@ -48,7 +48,7 @@ public class ClienteDAO {
 	}
 	
 	
-	public List<Cliente> getBestClientes() {
+	public List<Cliente> getBestClientes() { //Con este método retornamos una lista de los clientes a los que más se le facturó
 		List<Cliente> clientes = new ArrayList<Cliente>();
 		try {
 			String select = "SELECT * FROM cliente";
