@@ -1,4 +1,6 @@
 package model;
+//Entidad Producto con sus respectivos métodos y atributos
+
 
 public class Producto {
 	private int id_producto;
